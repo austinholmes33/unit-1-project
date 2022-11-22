@@ -55,14 +55,20 @@
 # Code here
 
 def new_book ():
-    title = input("What is the book title? ")
-    author = input("Who is the book's author? ")
+    title = input("What is the book title? - ")
+    author = input("Who is the book's author? - ")
     try:
-        year = int(input("What year was the book published? "))
+        year = int(input("What year was the book published? - "))
     except:
-        year = int(input("Please type a number for the year? - "))
-    rating = input("What is the book's rating? ")
-    pages = input("How many pages does the book have? ")
+        year = int(input("Please type a number for the year - "))
+    try:
+        rating = float(input("What is the book's rating? "))
+    except:
+        rating = float(input("Please type a number for the rating - "))
+    try:
+        pages = int(input("How many pages does the book have? - "))
+    except:
+        pages = int(input("Please type a number for the amount of pages - "))
 
 
     book_dictionary = {
@@ -84,6 +90,8 @@ print(new_book())
 
 # Code here
 
+fav_books = ['The Crossing', 'Suttree', 'Lonesome Dove', 'The Shape of the Journey', 'What About This']
+
 def main_menu():
     if:
         return
@@ -97,4 +105,5 @@ def main_menu():
 ## Now add a while loop to your main menu to keep it alive, and continually asking for input until the user chooses to exit the program. Call the main menu to ensure it functions properly.
 
 # Code here
+
 
