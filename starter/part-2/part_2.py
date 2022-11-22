@@ -66,10 +66,15 @@ print(my_author_set)
 
 # for book in my_authors:
     # print(book)
+for book in my_authors:
+    print(book)
 
 # for book in my_authors_tuple:
     # print(book)
+for book in my_author_tuple:
+    print(book)
 
 # for book in my_authors_set:
     # print(book)
-
+for book in my_author_set:
+    print(book)
