@@ -4,6 +4,24 @@
 
 # Code here
 
+# def new_book ():
+#     title = input("What is the book title? ")
+#     author = input("Who is the book's author? ")
+#     year = input("What year was the book published? ")
+#     rating = input("What is the book's rating? ")
+#     pages = input("How many pages does the book have? ")
+
+#     book_dictionary = {
+#         "title": title,
+#         "author": author,
+#         "year": year,
+#         "rating": rating,
+#         "pages": pages
+#     }
+
+#     return book_dictionary
+
+# print(new_book())
 
 ### Step 2 - Type conversion
 
@@ -11,7 +29,24 @@
 
 # Code here
 
+# def new_book ():
+#     title = input("What is the book title? ")
+#     author = input("Who is the book's author? ")
+#     year = int(input("What year was the book published? "))
+#     rating = float(input("What is the book's rating? "))
+#     pages = int(input("How many pages does the book have? "))
 
+#     book_dictionary = {
+#         "title": title,
+#         "author": author,
+#         "year": year,
+#         "rating": rating,
+#         "pages": pages
+#     }
+
+#     return book_dictionary
+
+# print(new_book())
 
 ### Step 3 - Error handling
 
@@ -19,6 +54,28 @@
 
 # Code here
 
+def new_book ():
+    title = input("What is the book title? ")
+    author = input("Who is the book's author? ")
+    try:
+        year = int(input("What year was the book published? "))
+    except:
+        year = int(input("Please type a number for the year? - "))
+    rating = input("What is the book's rating? ")
+    pages = input("How many pages does the book have? ")
+
+
+    book_dictionary = {
+        "title": title,
+        "author": author,
+        "year": year,
+        "rating": rating,
+        "pages": pages
+    }
+
+    return book_dictionary
+
+print(new_book())
 
 
 ### Step 4 - if/elif/else
@@ -26,6 +83,13 @@
 ## Now create a main menu function that gives the user options. Handle their choices with if/elif/else statements.
 
 # Code here
+
+def main_menu():
+    if:
+        return
+    elif:
+        return
+    else:
 
 
 ### Step 5 - while loops
