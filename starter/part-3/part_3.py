@@ -10,7 +10,11 @@ my_book = {
 
 # Code below
 
+def return_string (dict):
+    # return a string of info in the dictionary called
+    return f"The title of the book is {dict['title']}, the author is {dict['author']}, the year it was published was {dict['year']}, the rating was {dict['rating']}, and it has {dict['pages']} pages."
 
+print(return_string(my_book))
 
 
 # Once you are finished with that function, create several more functions which return individual pieces of information from the book.
