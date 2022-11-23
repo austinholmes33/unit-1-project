@@ -4,24 +4,24 @@
 
 # Code here
 
-# def new_book ():
-#     title = input("What is the book title? ")
-#     author = input("Who is the book's author? ")
-#     year = input("What year was the book published? ")
-#     rating = input("What is the book's rating? ")
-#     pages = input("How many pages does the book have? ")
+def new_book ():
+    title = input("What is the book title? ")
+    author = input("Who is the book's author? ")
+    year = input("What year was the book published? ")
+    rating = input("What is the book's rating? ")
+    pages = input("How many pages does the book have? ")
 
-#     book_dictionary = {
-#         "title": title,
-#         "author": author,
-#         "year": year,
-#         "rating": rating,
-#         "pages": pages
-#     }
+    book_dictionary = {
+        "title": title,
+        "author": author,
+        "year": year,
+        "rating": rating,
+        "pages": pages
+    }
 
-#     return book_dictionary
+    return book_dictionary
 
-# print(new_book())
+print(new_book())
 
 ### Step 2 - Type conversion
 
@@ -29,24 +29,24 @@
 
 # Code here
 
-# def new_book ():
-#     title = input("What is the book title? ")
-#     author = input("Who is the book's author? ")
-#     year = int(input("What year was the book published? "))
-#     rating = float(input("What is the book's rating? "))
-#     pages = int(input("How many pages does the book have? "))
+def new_book ():
+    title = input("What is the book title? ")
+    author = input("Who is the book's author? ")
+    year = int(input("What year was the book published? "))
+    rating = float(input("What is the book's rating? "))
+    pages = int(input("How many pages does the book have? "))
 
-#     book_dictionary = {
-#         "title": title,
-#         "author": author,
-#         "year": year,
-#         "rating": rating,
-#         "pages": pages
-#     }
+    book_dictionary = {
+        "title": title,
+        "author": author,
+        "year": year,
+        "rating": rating,
+        "pages": pages
+    }
 
-#     return book_dictionary
+    return book_dictionary
 
-# print(new_book())
+print(new_book())
 
 ### Step 3 - Error handling
 
@@ -90,14 +90,60 @@ print(new_book())
 
 # Code here
 
-fav_books = ['The Crossing', 'Suttree', 'Lonesome Dove', 'The Shape of the Journey', 'What About This']
+fav_books = [
+    {
+        "title": "The Crossing",
+        "author": "Cormac McCarthy",
+        "year": 1994
+        "rating": 4.1
+        "pages": 425
+    },
 
-def main_menu():
-    if:
-        return
-    elif:
-        return
+    {
+        "title": "Lonesome Dove",
+        "author": "Larry McMurtry",
+        "year": 1985,
+        "rating": 4.5,
+        "pages": 843
+    },
+
+    {
+        "title": "Suttree",
+        "author":  "Cormac McCarthy",
+        "year": 1979,
+        "rating": 4.2,
+        "pages": 471
+    }
+    
+    {
+        "title": "The Shape of the Journey",
+        "author": "Jim Harrison",
+        "year": 1998,
+        "rating": 4.3,
+        "pages": 484
+    },
+    
+    {
+        "title": "What About This",
+        "author": "Frank Stanford",
+        "year": 2015,
+        "rating": 4.7,
+        "pages": 764
+    },
+]
+
+def main_menu(books):
+    select = input("Select 1 to add a book. Select 2 to see all books. Select 3 to exit the program. - ")
+
+    if select == "1":
+        books.append(create_new_book())
+    elif select == "2":
+        print_all_books(books)
+    elif select == "3":
+        print("\nExiting")
+        active = False
     else:
+        print("\nPlease enter a number.\n")
 
 
 ### Step 5 - while loops
@@ -106,4 +152,11 @@ def main_menu():
 
 # Code here
 
+active = True
 
+while active:
+    answer = input("press 1 to continue, press 2 to end: \t")
+    if answer == "1": 
+        pass
+    elif answer == "2":
+        active = False
