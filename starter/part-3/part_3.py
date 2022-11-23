@@ -12,7 +12,7 @@ my_book = {
 
 def return_string (dict):
     # return a string of info in the dictionary called
-    return f"The title of the book is {dict['title']}, the author is {dict['author']}" 
+    return f"The title of the book is {dict['title']}, the author is {dict['author']}." 
 
 # print(return_string(my_book))
 
