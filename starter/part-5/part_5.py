@@ -52,7 +52,108 @@
 ### Step 4 - Expand and refactor
 
 ## Now follow the instructions in this final step. Expand your project. Clean up the code. Make your application functional. Great job getting your first Python application finished!
+fav_books = [
+    {
+        "title": "The Crossing",
+        "author": "Cormac McCarthy",
+        "year": 1994,
+        "rating": 4.1,
+        "pages": 425
+    },
 
+    {
+        "title": "Lonesome Dove",
+        "author": "Larry McMurtry",
+        "year": 1985,
+        "rating": 4.5,
+        "pages": 843
+    },
+
+    {
+        "title": "Suttree",
+        "author":  "Cormac McCarthy",
+        "year": 1979,
+        "rating": 4.2,
+        "pages": 471
+    },
+    
+    {
+        "title": "The Shape of the Journey",
+        "author": "Jim Harrison",
+        "year": 1998,
+        "rating": 4.3,
+        "pages": 484
+    },
+    
+    {
+        "title": "What About This",
+        "author": "Frank Stanford",
+        "year": 2015,
+        "rating": 4.7,
+        "pages": 764
+    }
+]
+
+
+def new_book ():
+    title = input("What is the book title? - ")
+    author = input("Who is the book's author? - ")
+    try:
+        year = int(input("What year was the book published? - "))
+    except:
+        year = int(input("Please type a number for the year - "))
+    try:
+        rating = float(input("What is the book's rating? "))
+    except:
+        rating = float(input("Please type a number for the rating - "))
+    try:
+        pages = int(input("How many pages does the book have? - "))
+    except:
+        pages = int(input("Please type a number for the amount of pages - "))
+
+
+    book_dictionary = {
+        "title": title,
+        "author": author,
+        "year": year,
+        "rating": rating,
+        "pages": pages
+    }
+
+    return book_dictionary
+
+def all_books(book_list):
+
+    print("\nAll of your books...\n")
+
+    for book in book_list:
+        title = book["title"]
+        author = book["author"]
+        year = book["year"]
+        rating = book["rating"]
+        pages = book["pages"]
+
+        print(f"Title: {title}, Author: {author}, Year: {year}, Rating: {rating}, Pages: {pages}")
+
+def main_menu(books):
+
+    active = True
+
+    while active:
+        
+        select = input("Select 1 to add a book. Select 2 to see all books. Select 3 to exit the program. - ")
+        
+        if select == "1":
+            books.append(new_book())
+        elif select == "2":
+            all_books(books)
+        elif select == "3":
+            print("\nExiting")
+            active = False
+        else:
+            print("\nPlease enter a number.\n")
+
+main_menu(fav_books)
 
 selection = None
 while selection != "exit":
