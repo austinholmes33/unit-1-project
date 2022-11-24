@@ -4,21 +4,21 @@
 
 # Code here
 
-selection = None
-while selection != "exit":
-	selection = input("would you like to add a book (add), view books (view), or exit (exit)?")
-	if selection not in ["add","view","exit"]:
-		print("not a valid selection")
-		continue
-	if selection == "add":
-		title = input("What is your first nam?")
-		author = input("What is your last name?")
-		year = int(input("What is your age?"))
-        rating = float(input("What is your age?"))
-        pages = int(input("What is your age?"))
-		f = open("test.txt", "a")
-		f.write(f"{title} {author} {year} {rating} {pages}\n")
-		f.close()
+# selection = None
+# while selection != "exit":
+# 	selection = input("would you like to add a book (add), view books (view), or exit (exit)?")
+# 	if selection not in ["add","view","exit"]:
+# 		print("not a valid selection")
+# 		continue
+# 	if selection == "add":
+# 		title = input("What is your first nam?")
+# 		author = input("What is your last name?")
+# 		year = int(input("What is your age?"))
+#         rating = float(input("What is your age?"))
+#         pages = int(input("What is your age?"))
+# 		f = open("test.txt", "a")
+# 		f.write(f"{title} {author} {year} {rating} {pages}\n")
+# 		f.close()
 
 
 
@@ -30,17 +30,17 @@ while selection != "exit":
 # Code here
 
 
-selection = None
-while selection != "exit":
-	selection = input("would you like to add a book (add), view books (view), or exit (exit)?")
-    if selection == "view":
-	    f = open("test.txt", "r")
-	    for line in f.readlines():
-		    title, author, year, rating, pages = line.strip().split(" ")
-		    print(f"{title} {author} {year} {rating} {pages}")
-        f.close()
-	elif selection == "exit":
-        break
+# selection = None
+# while selection != "exit":
+# 	selection = input("would you like to add a book (add), view books (view), or exit (exit)?")
+#     if selection == "view":
+# 	    f = open("test.txt", "r")
+# 	    for line in f.readlines():
+# 		    title, author, year, rating, pages = line.strip().split(" ")
+# 		    print(f"{title} {author} {year} {rating} {pages}")
+#         f.close()
+# 	elif selection == "exit":
+#         break
 
 ### Step 3 - if __name__ == "__main__":
 
@@ -52,3 +52,28 @@ while selection != "exit":
 ### Step 4 - Expand and refactor
 
 ## Now follow the instructions in this final step. Expand your project. Clean up the code. Make your application functional. Great job getting your first Python application finished!
+
+
+selection = None
+while selection != "exit":
+	selection = input("Would you like to add a book (add) view books (view) or exit (exit)?")
+	if selection not in ["add","view","exit"]:
+		print("not a valid selection")
+		continue
+	if selection == "add":
+		title = input("What is the book title?")
+		author = input("Who is the author?")
+		year = int(input("What year was it published?"))
+		rating = float(input("What is the book's rating?"))
+		pages = int(input("How many pages does the book have?"))
+		f = open(test.txt, "a")
+		f.write(f"{title} {author} {year} {rating} {pages}\n")
+		f.close()
+	if selection == "view":
+		f = open(test.txt, "r")
+		for line in f.readlines():
+			title, author, year, rating, pages = line.strip().split(' ')
+			print(f"{title} {author} {year} {rating} {pages}")
+			f.close()
+	elif selection == "exit":
+		break
