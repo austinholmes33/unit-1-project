@@ -122,6 +122,28 @@ def new_book ():
 
     return book_dictionary
 
+def organize_by_year(books):
+    if books['year'] >= 2000:
+        return f"The book {books['title']} is new"
+    else:
+        return f"The book is old"
+
+def determine_quality(books):
+    if books['rating'] >= 4:
+        return f"{books['title']} is a good book"
+    elif books['rating'] < 3.9 and books['rating'] >= 2.5:
+        return f"{['title']} is a decent book"
+    else: 
+        return f"{books['title']} is not a good book"
+
+def organize_by_pagecount(books):
+    if books['pages'] > 300:
+        return f"{books['title']} is a long book"
+    elif books['pages'] >= 150 and books['pages'] <= 299:
+        return f"{books['title']} is a medium-length book"
+    else:
+        return f"{books['title']} is a short book"
+
 def all_books(book_list):
 
     print("\nAll of your books...\n")
@@ -135,46 +157,72 @@ def all_books(book_list):
 
         print(f"Title: {title}, Author: {author}, Year: {year}, Rating: {rating}, Pages: {pages}")
 
+
+        
+        # select = input("Select 1 to add a book. Select 2 to see all books. Select 3 to organize by page count. Select 4 to determine quality by rating. Select 5 to organize by year.\
+        # Select exit to exit the program. - ")
+        
+        # if select == "1":
+        #     books.append(new_book())
+        # elif select == "2":
+        #     all_books(books)
+        # elif select == "3":
+        #     organize_by_pagecount(books)
+        # elif select == "4":
+        #     determine_quality(books)
+        # elif select == "5":
+        #     organize_by_year(books)
+        # elif select == "exit":
+        #     print("\nExiting")
+        #     active = False
+        # else:
+        #     print("\nPlease enter a number.\n")
+
+    # main_menu(fav_books)
+
+# selection = None
+# while selection != "exit":
+
 def main_menu(books):
 
     active = True
 
     while active:
-        
-        select = input("Select 1 to add a book. Select 2 to see all books. Select 3 to exit the program. - ")
-        
-        if select == "1":
-            books.append(new_book())
-        elif select == "2":
-            all_books(books)
-        elif select == "3":
-            print("\nExiting")
-            active = False
-        else:
-            print("\nPlease enter a number.\n")
 
-main_menu(fav_books)
+	    selection = input("Select (1) to add a book. Select (2) to view books. Select (3) to organize by page count. Select (4) to sort by rating.\
+    Select (5) to organize by year. Select (exit) to exit.")
+    if selection not in ["1","2","3","4","5","exit"]:
+        print("not a valid selection")
+        continue
+    elif selection == "1":
+        title = input("What is the book title?")
+        author = input("Who is the author?")
+        year = int(input("What year was it published?"))
+        rating = float(input("What is the book's rating?"))
+        pages = int(input("How many pages does the book have?"))
+        f = open("test.txt", "a")
+        f.write(f"{title} {author} {year} {rating} {pages}\n")
+        f.close()
+    elif selection == "2":
+        f = open("test.txt", "r")
+        for line in f.readlines():
+            title, author, year, rating, pages = line.strip().split(' ')
+            print(f"{title} {author} {year} {rating} {pages}")
+            f.close()
+    elif selection == "3":
+        f = open("test.txt", "r")
+        organize_by_pagecount(books)
+        f.close()
+    elif selection == "4":
+        f = open("test.txt", "r")
+        determine_quality(books)
+        f.close()
+    elif selection == "5":
+        f = open("test.txt", "r")
+        organize_by_year(books)
+        f.close()
+    elif selection == "exit":
+        break
 
-selection = None
-while selection != "exit":
-	selection = input("Would you like to add a book (add) view books (view) or exit (exit)?")
-	if selection not in ["add","view","exit"]:
-		print("not a valid selection")
-		continue
-	if selection == "add":
-		title = input("What is the book title?")
-		author = input("Who is the author?")
-		year = int(input("What year was it published?"))
-		rating = float(input("What is the book's rating?"))
-		pages = int(input("How many pages does the book have?"))
-		f = open(test.txt, "a")
-		f.write(f"{title} {author} {year} {rating} {pages}\n")
-		f.close()
-	if selection == "view":
-		f = open(test.txt, "r")
-		for line in f.readlines():
-			title, author, year, rating, pages = line.strip().split(' ')
-			print(f"{title} {author} {year} {rating} {pages}")
-			f.close()
-	elif selection == "exit":
-		break
+if __name__ == "__main__":
+    main_menu("test.txt")
