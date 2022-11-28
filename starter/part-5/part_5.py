@@ -81,33 +81,22 @@ def book_dictionary (books):
     with open(books, "r") as f:
         file = f.readlines()
         for line in file:
+            print(line)
+            print(type(line))
             title, author, year, rating, pages = line.split(", ")
-        book_list.append({
-            "title": title,
-            "author": author,
-            "year": int(year),
-            "rating": float(rating),
-            "pages": int(pages)
-        })
+            print(line.split(', '))
+            book_list.append({
+                "title": title,
+                "author": author,
+                "year": int(year),
+                "rating": float(rating),
+                "pages": int(pages)
+            })
     return book_list
     
 
-
-# def all_books(book_list):
-
-#     print("\nAll of your books...\n")
-
-#     for books in book_list:
-#         title = books["title"]
-#         author = books["author"]
-#         year = books["year"]
-#         rating = books["rating"]
-#         pages = books["pages"]
-
-#         print(f"{books['title']} {books['author']} {books['year']} {books['rating']} {books['pages']}")
-
-
 def organize_by_year(books):
+
     if books['year'] >= 2000:
         return f"The book {books['title']} is new"
     else:
@@ -191,6 +180,19 @@ if __name__ == "__main__":
             # for line in f.readlines():
             #     title, author, year, rating, pages = line.split(' ')
 
+
+# def all_books(book_list):
+
+#     print("\nAll of your books...\n")
+
+#     for books in book_list:
+#         title = books["title"]
+#         author = books["author"]
+#         year = books["year"]
+#         rating = books["rating"]
+#         pages = books["pages"]
+
+#         print(f"{books['title']} {books['author']} {books['year']} {books['rating']} {books['pages']}")
 
 # def view_all_books (books):
 #     for book in book_dictionary(books):
