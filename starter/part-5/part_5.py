@@ -52,48 +52,47 @@
 ### Step 4 - Expand and refactor
 
 ## Now follow the instructions in this final step. Expand your project. Clean up the code. Make your application functional. Great job getting your first Python application finished!
-fav_books = [
-    {
-        "title": "The Crossing",
-        "author": "Cormac McCarthy",
-        "year": 1994,
-        "rating": 4.1,
-        "pages": 425
-    },
+# fav_books = [
+#     {
+#         "title": "The Crossing",
+#         "author": "Cormac McCarthy",
+#         "year": 1994,
+#         "rating": 4.1,
+#         "pages": 425
+#     },
 
-    {
-        "title": "Lonesome Dove",
-        "author": "Larry McMurtry",
-        "year": 1985,
-        "rating": 4.5,
-        "pages": 843
-    },
+#     {
+#         "title": "Lonesome Dove",
+#         "author": "Larry McMurtry",
+#         "year": 1985,
+#         "rating": 4.5,
+#         "pages": 843
+#     },
 
-    {
-        "title": "Suttree",
-        "author":  "Cormac McCarthy",
-        "year": 1979,
-        "rating": 4.2,
-        "pages": 471
-    },
+#     {
+#         "title": "Suttree",
+#         "author":  "Cormac McCarthy",
+#         "year": 1979,
+#         "rating": 4.2,
+#         "pages": 471
+#     },
     
-    {
-        "title": "The Shape of the Journey",
-        "author": "Jim Harrison",
-        "year": 1998,
-        "rating": 4.3,
-        "pages": 484
-    },
+#     {
+#         "title": "The Shape of the Journey",
+#         "author": "Jim Harrison",
+#         "year": 1998,
+#         "rating": 4.3,
+#         "pages": 484
+#     },
     
-    {
-        "title": "What About This",
-        "author": "Frank Stanford",
-        "year": 2015,
-        "rating": 4.7,
-        "pages": 764
-    }
-]
-
+#     {
+#         "title": "What About This",
+#         "author": "Frank Stanford",
+#         "year": 2015,
+#         "rating": 4.7,
+#         "pages": 764
+#     }
+# ]
 
 def new_book (books):
 
@@ -112,25 +111,51 @@ def new_book (books):
     except:
         pages = int(input("Please type a number for the amount of pages - "))
 
-    with open(books, "a") as file:
-        file.write(f"{title}, {author}, {year}, {rating}, {pages}\n")
+    with open(books, "a") as f:
+        f.write(f"{title}, {author}, {year}, {rating}, {pages}\n")
 
 
-    # book_dictionary = {
-    #     "title": title,
-    #     "author": author,
-    #     "year": year,
-    #     "rating": rating,
-    #     "pages": pages
-    # }
+def book_dictionary (books):
+    book_list = []
+    with open(books, "r") as f:
+        file = f.readlines()
+        for line in file:
+            title, author, year, rating, pages = line.split(", ")
+        book_list.append({
+            "title": title,
+            "author": author,
+            "year": int(year),
+            "rating": float(rating),
+            "pages": int(pages)
+        })
+    return book_dictionary
 
-    # return book_dictionary
+
+def all_books(book_list):
+
+    print("\nAll of your books...\n")
+
+    for books in book_list:
+        title = books["title"]
+        author = books["author"]
+        year = books["year"]
+        rating = books["rating"]
+        pages = books["pages"]
+
+        print(f"{books['title']} {books['author']} {books['year']} {books['rating']} {books['pages']}")
+
+
+# def view_all_books (books):
+#     for book in book_dictionary(books):
+#         print(all_books(book))
+
 
 def organize_by_year(books):
     if books['year'] >= 2000:
         return f"The book {books['title']} is new"
     else:
         return f"The book is old"
+
 
 def determine_quality(books):
     if books['rating'] >= 4:
@@ -140,6 +165,7 @@ def determine_quality(books):
     else: 
         return f"{books['title']} is not a good book"
 
+
 def organize_by_pagecount(books):
     if books['pages'] > 300:
         return f"{books['title']} is a long book"
@@ -148,23 +174,63 @@ def organize_by_pagecount(books):
     else:
         return f"{books['title']} is a short book"
 
-def all_books(book_list):
 
-    print("\nAll of your books...\n")
+def main_menu(books):
 
-    for book in book_list:
-        title = book["title"]
-        author = book["author"]
-        year = book["year"]
-        rating = book["rating"]
-        pages = book["pages"]
+    active = True
 
-        print(f"Title: {title}, Author: {author}, Year: {year}, Rating: {rating}, Pages: {pages}")
+    while active:
+
+        selection = input("Select (1) to add a book. Select (2) to view books. Select (3) to organize by page count. Select (4) to sort by rating. Select (5) to organize by year. Select (exit) to exit.")
+        if selection not in ["1", "2", "3", "4", "5", "exit"]:
+            print("not a valid selection")
+            continue
+        elif selection == "1":
+            title = input("What is the book title?")
+            author = input("Who is the author?")
+            year = int(input("What year was it published?"))
+            rating = float(input("What is the book's rating?"))
+            pages = int(input("How many pages does the book have?"))
+            f = open("test.txt", "a")
+            f.write(f"{title} {author} {year} {rating} {pages}\n")
+            f.close()
+        elif selection == "2":
+            all_books(books)
+            # f = open("test.txt", "r")
+            # for line in f.readlines():
+            #     title, author, year, rating, pages = line.split(", ")
+            #     print(f"{books['title']} {books['author']} {books['year']} {books['rating']} {books['pages']}")
+            #     f.close()
+        elif selection == "3":
+            # f = open("test.txt", "r")
+            # for line in f.readlines():
+            #     title, author, year, rating, pages = line.split(' ')
+                organize_by_pagecount(books)
+            # f.close()
+        elif selection == "4":
+            # f = open("test.txt", "r")
+            # for line in f.readlines():
+            #     title, author, year, rating, pages = line.split(' ')
+                determine_quality(books)
+            # f.close()
+        elif selection == "5":
+            # f = open("test.txt", "r")
+            # for line in f.readlines():
+            #     title, author, year, rating, pages = line.split(' ')
+                organize_by_year(books)
+            # f.close()
+        elif selection == "exit":
+            break
+
+if __name__ == "__main__":
+    main_menu("test.txt")
 
 
 
-        
-        # select = input("Select 1 to add a book. Select 2 to see all books. Select 3 to organize by page count. Select 4 to determine quality by rating. Select 5 to organize by year.\
+
+
+
+            # select = input("Select 1 to add a book. Select 2 to see all books. Select 3 to organize by page count. Select 4 to determine quality by rating. Select 5 to organize by year.\
         # Select exit to exit the program. - ")
         
         # if select == "1":
@@ -187,52 +253,3 @@ def all_books(book_list):
 
 # selection = None
 # while selection != "exit":
-
-def main_menu(books):
-
-    active = True
-
-    while active:
-
-        selection = input("Select (1) to add a book. Select (2) to view books. Select (3) to organize by page count. Select (4) to sort by rating. Select (5) to organize by year. Select (exit) to exit.")
-        if selection not in ["1", "2", "3", "4", "5", "exit"]:
-            print("not a valid selection")
-            continue
-        elif selection == "1":
-            # title = input("What is the book title?")
-            # author = input("Who is the author?")
-            # year = int(input("What year was it published?"))
-            # rating = float(input("What is the book's rating?"))
-            # pages = int(input("How many pages does the book have?"))
-            # f = open("test.txt", "a")
-            # f.write(f"{title} {author} {year} {rating} {pages}\n")
-            f.close()
-        elif selection == "2":
-            f = open("test.txt", "r")
-            for line in f.readlines():
-                # title, author, year, rating, pages = line.strip()
-                print(f"{books['title']} {books['author']} {books['year']} {books['rating']} {books['pages']}")
-                f.close()
-        elif selection == "3":
-            f = open("test.txt", "r")
-            for line in f.readlines():
-                # title, author, year, rating, pages = line.strip().split(' ')
-                organize_by_pagecount(books)
-            f.close()
-        elif selection == "4":
-            f = open("test.txt", "r")
-            for line in f.readlines():
-                title, author, year, rating, pages = line.strip().split(' ')
-                determine_quality(books)
-            f.close()
-        elif selection == "5":
-            f = open("test.txt", "r")
-            for line in f.readlines():
-                title, author, year, rating, pages = line.strip().split(' ')
-                organize_by_year(books)
-            f.close()
-        elif selection == "exit":
-            break
-
-if __name__ == "__main__":
-    main_menu("test.txt")
