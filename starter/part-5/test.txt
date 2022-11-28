@@ -1,1 +1,3 @@
 lonesome dove, mcmurtry, 1980, 4.9, 800
+don quixote, cervantes, 1570, 3.9, 1100
+the magic mountain, mann, 1920, 4.2, 700

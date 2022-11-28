@@ -81,10 +81,8 @@ def book_dictionary (books):
     with open(books, "r") as f:
         file = f.readlines()
         for line in file:
-            print(line)
-            print(type(line))
             title, author, year, rating, pages = line.split(", ")
-            print(line.split(', '))
+            # print(line.split(', '))
             book_list.append({
                 "title": title,
                 "author": author,
@@ -96,30 +94,23 @@ def book_dictionary (books):
     
 
 def organize_by_year(books):
-
-    if books['year'] >= 2000:
-        return f"The book {books['title']} is new"
-    else:
-        return f"The book is old"
+    list = book_dictionary(books)
+    for book in list:    
+        if int(book['year']) >= 2000:
+            print (f"{book['title']} is new")
+        else:
+            print (f"{book['title']} is old")
 
 
 def determine_quality(books):
-    if books['rating'] >= 4:
-        return f"{books['title']} is a good book"
-    elif books['rating'] < 3.9 and books['rating'] >= 2.5:
-        return f"{['title']} is a decent book"
-    else: 
-        return f"{books['title']} is not a good book"
-
-
-def organize_by_pagecount(books):
-    if books['pages'] > 300:
-        return f"{books['title']} is a long book"
-    elif books['pages'] >= 150 and books['pages'] <= 299:
-        return f"{books['title']} is a medium-length book"
-    else:
-        return f"{books['title']} is a short book"
-
+    list = book_dictionary(books)
+    for book in list:
+        if float(book['rating']) >= 4.0:
+            print (f"{book['title']} is a good book")
+        elif float(book['rating']) < 3.9 and float(book['rating']) >= 2.5:
+            print (f"{['title']} is a decent book")
+        else: 
+            print (f"{book['title']} is not a good book")
 
 def main_menu(books):
 
@@ -127,20 +118,20 @@ def main_menu(books):
 
     while active:
 
-        selection = input("Select (1) to add a book. Select (2) to view books. Select (3) to organize by page count. Select (4) to sort by rating. Select (5) to organize by year. Select (exit) to exit.")
+        selection = input("Select (1) to add a book. Select (2) to view books. Select (3) to see the book count. Select (4) to sort by rating. Select (5) to organize by year. Select (exit) to exit.")
         if selection not in ["1", "2", "3", "4", "5", "exit"]:
             print("not a valid selection")
             continue
         elif selection == "1":
             new_book(books)        
         elif selection == "2":
-            book_dictionary(books)         
+            print(book_dictionary(books))         
         elif selection == "3":
-            organize_by_pagecount(books) 
+            print(f"There are {len(book_dictionary(books))} books.") 
         elif selection == "4":
-            determine_quality(books)
+            print(determine_quality(books))
         elif selection == "5":
-            organize_by_year(books)
+            print(organize_by_year(books))
         elif selection == "exit":
             break
 
@@ -180,6 +171,15 @@ if __name__ == "__main__":
             # for line in f.readlines():
             #     title, author, year, rating, pages = line.split(' ')
 
+
+
+# def organize_by_pagecount(books):
+#     if books['pages'] > 300:
+#         return f"{books['title']} is a long book"
+#     elif books['pages'] >= 150 and books['pages'] <= 299:
+#         return f"{books['title']} is a medium-length book"
+#     else:
+#         return f"{books['title']} is a short book"
 
 # def all_books(book_list):
 
